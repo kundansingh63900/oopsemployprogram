@@ -1,0 +1,37 @@
+class Employee:
+    def __init__(self, emp_id, name, basic_salary):
+        self.__emp_id = emp_id
+        self.__name = name
+        self.__basic_salary = basic_salary
+
+    def calculate_salary(self):
+        hra = 0.20 * self.__basic_salary  
+        da = 0.10 * self.__basic_salary   
+        tax = 0.15 * self.__basic_salary   
+
+        gross_salary = self.__basic_salary + hra + da
+        net_salary = gross_salary - tax
+
+        return hra, da, tax, gross_salary, net_salary
+
+    def display(self):
+        hra, da, tax, gross, net = self.calculate_salary()
+
+        print("\n----- Employee Salary Details -----")
+        print("Employee ID:", self.__emp_id)
+        print("Name:", self.__name)
+        print("Basic Salary:", self.__basic_salary)
+        print("HRA:", hra)
+        print("DA:", da)
+        print("Tax Deduction:", tax)
+        print("Gross Salary:", gross)
+        print("Net Salary:", net)
+
+
+
+emp_id = int(input("Enter Employee ID: "))
+name = input("Enter Name: ")
+basic_salary = float(input("Enter Basic Salary: "))
+
+emp = Employee(emp_id, name, basic_salary)
+emp.display()
